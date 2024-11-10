@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Công Việc</title>
+    <!-- Liên kết đến Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Danh Sách Công Việc</h1>
+
+    <!-- Đường link tới trang tìm kiếm nâng cao -->
+    <div class="text-center mb-4">
+        <a href="/job/job-search" class="btn btn-info">Tìm Kiếm Công Việc Nâng Cao</a>
+        <a href="/candidates/candidate-search" class="btn btn-secondary">Tìm Kiếm Ứng Viên Nâng Cao</a>
+    </div>
+
+    <div class="text-right mb-3">
+        <a th:href="@{'/job/job/create?companyId=' + ${companyId}}" class="btn btn-primary">Tạo công việc mới</a>
+    </div>
+
+    <!-- Bảng danh sách công việc -->
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên Công Việc</th>
+            <th>Mô Tả</th>
+            <th>Công Ty</th>
+            <th>Thao Tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="job : ${jobs}">
+            <tr>
+                <td th:text="${job.id}"></td>
+                <td th:text="${job.jobName}"></td>
+                <td th:text="${job.jobDesc}"></td>
+                <td th:text="${job.company != null ? job.company.compName : 'Chưa có công ty'}"></td>
+                <td>
+                    <a th:href="@{'/job/job/' + ${job.id}}" class="btn btn-info btn-sm">Chi Tiết</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+
+<!-- Liên kết đến Bootstrap JavaScript và các thư viện phụ thuộc -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div th:switch="${jobsByCompany}" >
+  <h2 th:case="null">No candidates yet!</h2>
+  <div th:case="*">
+    <h2>Jobs</h2>
+    <table border="1">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Des</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="job : ${jobsByCompany}">
+        <td th:text="${job.id}"></td>
+        <td th:text="${job.jobDesc}"></td>
+        <td th:text="${job.jobName}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

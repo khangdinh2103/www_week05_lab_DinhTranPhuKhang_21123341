@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kết Quả Tìm Kiếm Công Việc</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Kết Quả Tìm Kiếm Công Việc</h2>
+  <!-- Form tìm kiếm lại (tùy chọn) -->
+  <form action="/jobs/search" method="get" class="form-inline mb-4">
+    <input type="text" name="location" placeholder="Vị Trí" class="form-control mr-2">
+    <!-- Thêm các trường tìm kiếm khác nếu cần -->
+    <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
+  </form>
+
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>Tên Công Việc</th>
+      <th>Công Ty</th>
+      <th>Vị Trí</th>
+      <th>Kỹ Năng Yêu Cầu</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job : ${jobs}">
+      <td th:text="${job.jobName}"></td>
+      <td th:text="${job.company.compName}"></td>
+      <td th:text="${job.company.address.city}"></td>
+      <td>
+        <ul>
+          <li th:each="js : ${job.jobSkills}" th:text="${js.skill.skillName} + ' (' + ${js.skillLevel} + ')'"></li>
+        </ul>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Bootstrap JS và các thư viện phụ thuộc -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

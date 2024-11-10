@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhập ID Công Ty</title>
+  <!-- Thêm liên kết tới Bootstrap -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="text-center">Nhập ID Công Ty để Lọc Công Việc</h1>
+
+  <!-- Form to Filter Jobs by Company ID -->
+  <form action="/job/jobs" method="GET" class="mt-4">
+    <div class="form-group">
+      <label for="companyId">Nhập ID Công Ty:</label>
+      <input type="number" id="companyId" name="companyId" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Lọc Công Việc</button>
+  </form>
+
+  <!-- Additional Links for Candidate Lists -->
+  <div class="mt-5">
+    <h5 class="text-center">Danh Sách Ứng Viên</h5>
+    <div class="d-flex justify-content-center">
+      <a href="/candidates/all" class="btn btn-info mx-2">Không Phân Trang</a>
+      <a href="/candidates" class="btn btn-secondary mx-2">Phân Trang</a>
+    </div>
+  </div>
+</div>
+
+<!-- Thêm liên kết tới Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
